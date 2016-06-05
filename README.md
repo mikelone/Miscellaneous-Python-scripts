@@ -34,7 +34,7 @@ Second it merges the original frame to the mask and creates a moving character o
  
 this is the a simple communication script between python host to a serial device
  
-used this to read information from a GPS device which output serial was baudrate 9600 .. 
+used this to read information from a GPS device which uses baudrate 9600 .. 
 
 ##How to run the file
 
