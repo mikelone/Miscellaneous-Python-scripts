@@ -2,7 +2,7 @@
 
 ##Author
 
-Mike
+Mikelone
 
 Miscellaneous Python scripts i have used on projects over the years..
 
@@ -35,6 +35,10 @@ Second it merges the original frame to the mask and creates a moving character o
 this is the a simple communication script between python host to a serial device
  
 used this to read information from a GPS device which uses baudrate 9600 .. 
+
+###yahooUS_finance.py
+
+shows 4 graphs of shocks from yahoo finance. shows the difference between the Dow and gold and the US dollar power shares.
 
 ##How to run the file
 
