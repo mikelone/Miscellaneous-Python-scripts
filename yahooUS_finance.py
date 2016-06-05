@@ -18,24 +18,26 @@ DatesTo = strftime("%Y-%m-%d");
 print (DatesTo)
 
 stockShares = ['UUP','QQQ','^DJI','GLD']
-#shareStore = [[],[]]
+
 shareStore = []
 for row,count in enumerate(stockShares):
     # initialize the variables
     shareHist = [];shareprice = [];normalizedshare = [];
     loadShare = [];
-    shareStore.append([])
+    shareStore.append([])  #create a blank row
     #
     loadShare = Share(count)
     shareHist = loadShare.get_historical(DatesFrom,DatesTo)
     for countprice in reversed(shareHist):
         shareprice.append(int(float(countprice['Close'])))
     for norm in shareprice:
-        normalizedshare.append(round(norm/max(shareprice),2)) # round to .12 places
-
+        #normalizedshare.append(round(norm/max(shareprice),2)) # round to .2 places works on python3
+        normalizedshare.append(format(float(norm)/max(shareprice),'.2f')) # works on python2
+            
     print(row)
     print(len(normalizedshare))
     shareStore[row].append(normalizedshare)
+    
 
 print(np.shape(shareStore))
 
