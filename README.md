@@ -38,7 +38,7 @@ used this to read information from a GPS device which uses baudrate 9600 ..
 
 ###yahooUS_finance.py
 
-shows 4 graphs of shocks from yahoo finance. shows the difference between the Dow and gold and the US dollar power shares.
+shows 4 stock from yahoo finance on 4 graphs formant. shows the difference between the Dow and gold and the US dollar power shares.
 
 ##How to run the file
 
