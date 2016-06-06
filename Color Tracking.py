@@ -6,22 +6,29 @@ cap = cv2.VideoCapture(0)
 cam_w = cap.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH);
 cam_h = cap.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT);
 
-cap.set(cv2.cv.CV_CAP_PROP_FPS,30)
+cap.set(cv2.cv.CV_CAP_PROP_FPS,19)
 
 print('cam_w', cap.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH))
 print('cam_h', cap.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT))
-print('CAP_PROP_FOURCC', int(cap.get(cv2.cv.CV_CAP_PROP_FOURCC)))
+print('CAP_PROP_FOURCC', cap.get(cv2.cv.CV_CAP_PROP_FOURCC))
 print('CAP_PROP_FPS', cap.get(cv2.cv.CV_CAP_PROP_FPS))
 
-
-fourcc = int(cap.get(cv2.cv.CV_CAP_PROP_FOURCC))
-#fourcc = cv2.cv.FOURCC('m','p','4','v')
-#fourcc = cv2.cv.CV_FOURCC('X','V','I','D')
-#fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('output.avi',fourcc,30,(int(cam_w),int(cam_h)))
+#####################################
+# codecs reference at www.free-codecs.com/guides/fourcc.htm
+# to manually enter your codecs
+#fourcc = -1
+# get the fourcc from capture frame
+#fourcc = int(cap.get(cv2.cv.CV_CAP_PROP_FOURCC))
+# for IYUV compression
+fourcc = cv2.cv.FOURCC('I','Y','U','V')
+# for Microsoft-Video 1
+#fourcc = cv2.cv.FOURCC('M','S','V','C')
+#
+#######################################
+out = cv2.VideoWriter('output.avi',fourcc,19,(int(cam_w),int(cam_h)))
 
 print('is writer on',bool(out.isOpened))
-
+print('using fourcc',fourcc)
 
 while(1):
 
@@ -63,6 +70,7 @@ while(1):
     k = cv2.waitKey(5) 
     if k == 27: #press escape key to exit
         break
-cap.release() #turn off the cam
-out.release()
+    
+out.release() #stops recording   
+cap.release() #turns off the cam
 cv2.destroyAllWindows()
